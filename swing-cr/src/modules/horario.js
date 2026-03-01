@@ -45,6 +45,10 @@ function generarHorario() {
 function cargarEventos() {
   let eventosGuardados = JSON.parse(localStorage.getItem("eventos"));
 
+  if (eventosGuardados === null) {
+    return; 
+  }
+
   for (let i = 0; i < eventosGuardados.length; i++) {
     let evento = eventosGuardados[i];
 
