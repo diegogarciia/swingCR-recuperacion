@@ -348,3 +348,23 @@ footer {
   font-size: 14px;
   color: #aaa;
 }
+
+.tarjeta-evento {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  margin: 2px;
+  cursor: pointer;
+}
+
+.tarjeta-clase {
+  background-color: #FFF3CD; 
+  color: #856404;
+}
+
+.tarjeta-actividad {
+  background-color: #D1ECF1; 
+  color: #0C5460;
+}

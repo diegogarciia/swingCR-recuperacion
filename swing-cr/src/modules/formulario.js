@@ -1,5 +1,6 @@
 import { Clase } from '../models/clase.js';
 import { Actividad } from '../models/actividad.js';
+import { initHorario } from './horario.js';
 
 export function initFormulario() {
   const diaSelect = document.getElementById("dia");
@@ -139,5 +140,6 @@ export function initFormulario() {
     camposActividad.style.display = "none";
     horaSelect.disabled = true;
     salaSelect.disabled = true;
+    initHorario();
   });
 }
