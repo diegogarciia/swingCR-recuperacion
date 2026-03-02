@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VII Festival Swing Ciudad Real</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="encabezado">
+        <img src="/src/assets/img/logo.png" alt="logo" id="logo" />
+        <div id="titulo" class="titulo">VII FESTIVAL SWING CIUDAD REAL</div>
+      </div>
+      <nav id="barra-navegacion">
+        <ul>
+          <li><a href="#encabezado">Home</a></li>
+          <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+          <li><a href="#horario">Horario</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="bailarines">
+      <img src="/src/assets/img/bailarines1.png" alt="bailarines1" />
+      <img src="/src/assets/img/bailarines2.png" alt="bailarines2" />
+      <img src="/src/assets/img/bailarines3.png" alt="bailarines3" />
+    </section>
+    <section id="sobre-nosotros">
+      <h2>EL FESTIVAL</h2>
+      <div class="contenido-sobre-nosotros">
+        <img src="/src/assets/img/todos.jpg" alt="todos" id="todos" />
+        <p>
+          El fin de semana del 10 al 12 de octubre es la fecha elegida para la
+          celebración del VII Festival Swing Ciudad Real. Tras seis ediciones,
+          la primera de ellas en formato Exchange (y una pandemia de por medio)
+          este festival sigue creciendo. La quinta edición contó con más de 200
+          bailarines venidos de diferentes puntos del país.<br /><br />
+          Además, hasta ahora han participado profesores de la talla de Núria
+          Bonet, Álex Mas, Lee Meidan, Lourdes Collado, Vincent Pitou, Carlos
+          Cayuela, Carla Stinus, Andrés Lázaro, María & Aurélien, María & Núria,
+          Ari & Simon, Clàudia, la Demo Swing Lab y Héctor y Sonia, Aiala y
+          Gurutz, Tyedric Hill y Viktor Lillard, Quinndy, Tamara Lobato y Lara
+          Cano, Rossana Tamiello; y bandas como The Jazz on Five, Basement Band,
+          Le dancing Pepa, Enric Peidro Swingtet y la Old Dixieland Band.
+        </p>
+      </div>
+    </section>
+
+    <section id="formulario" class="seccion-formulario">
+      <h2>Registrar un Evento</h2>
+      <form id="formulario-evento" class="formulario">
+        
+        <div class="grupo-form">
+          <label for="dia">1. Selecciona el Día:</label>
+          <select id="dia" required>
+            <option value="">-- Selecciona --</option>
+            <option value="viernes">Viernes</option>
+            <option value="sabado">Sábado</option>
+            <option value="domingo">Domingo</option>
+          </select>
+        </div>
+
+        <div class="grupo-form">
+          <label for="hora">2. Selecciona la Hora:</label>
+          <select id="hora" required disabled>
+            <option value="">-- Elige un día primero --</option>
+            </select>
+        </div>
+
+        <div class="grupo-form">
+          <label for="tipo">3. Tipo de Evento:</label>
+          <select id="tipo" required>
+            <option value="">-- Selecciona --</option>
+            <option value="clase">Clase</option>
+            <option value="actividad">Actividad</option>
+          </select>
+        </div>
+
+        <div class="grupo-form">
+          <label for="sala">4. Ubicaciones Libres:</label>
+          <select id="sala" required disabled>
+            <option value="">-- Elige día, hora y tipo primero --</option>
+            </select>
+        </div>
+
+        <div id="campos-clase" class="campos-dinamicos" style="display:none;">
+          <div class="grupo-form">
+            <label for="estilo-clase">Estilo:</label>
+            <input type="text" id="estilo-clase" placeholder="Lindy Hop, Shag...">
+          </div>
+          <div class="grupo-form">
+            <label for="nivel-clase">Nivel:</label>
+            <select id="nivel-clase">
+              <option value="">-- Selecciona --</option>
+              <option value="Básico">Básico</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Avanzado">Avanzado</option>
+            </select>
+          </div>
+          <div class="grupo-form">
+            <label for="profesores-clase">Profesores:</label>
+            <input type="text" id="profesores-clase" placeholder="Ej. Marta y Pedro">
+          </div>
+        </div>
+
+        <div id="campos-actividad" class="campos-dinamicos" style="display:none;">
+          <div class="grupo-form">
+            <label for="tipo-actividad">Tipo de Actividad:</label>
+            <select id="tipo-actividad">
+              <option value="">-- Selecciona --</option>
+              <option value="Taster">Taster</option>
+              <option value="Social">Social</option>
+              <option value="Concierto">Concierto</option>
+              <option value="Mix & Match">Mix & Match</option>
+            </select>
+          </div>
+          <div class="grupo-form">
+            <div class="radio-group">
+              <label>Banda en directo:</label>
+              <label><input type="radio" name="banda" value="si" checked> Sí</label>
+              <label><input type="radio" name="banda" value="no"> No</label>
+            </div>
+          </div>
+          <div class="grupo-form">
+            <label for="descripcion-actividad">Descripción:</label>
+            <textarea id="descripcion-actividad" placeholder="Escribe aquí los detalles..."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-guardar">Guardar Evento</button>
+      </form>
+    </section>
+
+    <section id="horario" class="seccion-horario">
+      <div class="bloque-programa">
+        <h2>Programa del Festival</h2>
+        
+        <div class="dia-horario">
+          <h3>Viernes</h3>
+          <div class="tabla-responsive">
+            <table class="tabla-programa" id="tabla-viernes">
+              <thead>
+                <tr>
+                  <th>Hora</th>
+                  <th>Sala Be Hopper</th>
+                  <th>Sala New Orleans</th>
+                  <th>Sala Savoy</th>
+                  <th>Antiguo Casino</th>
+                  <th>Parque de Gasset</th>
+                  <th>Prado</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-viernes">
+                </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dia-horario">
+          <h3>Sábado</h3>
+          <div class="tabla-responsive">
+            <table class="tabla-programa" id="tabla-sabado">
+              <thead>
+                <tr>
+                  <th>Hora</th>
+                  <th>Sala Be Hopper</th>
+                  <th>Sala New Orleans</th>
+                  <th>Sala Savoy</th>
+                  <th>Antiguo Casino</th>
+                  <th>Parque de Gasset</th>
+                  <th>Prado</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-sabado">
+                 </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dia-horario">
+          <h3>Domingo</h3>
+          <div class="tabla-responsive">
+            <table class="tabla-programa" id="tabla-domingo">
+              <thead>
+                <tr>
+                  <th>Hora</th>
+                  <th>Sala Be Hopper</th>
+                  <th>Sala New Orleans</th>
+                  <th>Sala Savoy</th>
+                  <th>Antiguo Casino</th>
+                  <th>Parque de Gasset</th>
+                  <th>Prado</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-domingo">
+                 </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="modal-evento" class="modal" style="display:none;">
+      <div class="modal-contenido">
+        <span id="cerrar-modal" class="cerrar">&times;</span>
+        <h2 id="modal-titulo"></h2>
+        <div id="modal-info"></div>
+        <button id="btn-eliminar" class="btn-eliminar">Eliminar Evento</button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container" id="contacto">
+        <div class="footer-columna">
+          <h2>Síguenos en redes sociales</h2>
+          <div class="iconos-redes">
+            <a href="https://www.facebook.com/swingcr">facebook</a>
+            <a href="https://www.instagram.com/swingcr">instagram</a>
+            <a href="https://www.x.com/swingcr">x</a>
+          </div>
+        </div>
+
+        <div class="footer-columna">
+          <h2>Contacto</h2>
+          <p>
+            Correo: <a href="mailto:infoswingcr@gmail.com">infoswingcr@gmail.com</a>
+          </p>
+          <p>Teléfono: +34 123 456 789</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; VII Festival Swing Ciudad Real. Todos los derechos
+          reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
