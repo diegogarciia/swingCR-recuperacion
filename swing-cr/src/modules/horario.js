@@ -118,3 +118,18 @@ function configurarCierreModal() {
     modal.style.display = "none";
   });
 }
+
+function borrarEvento(idEventoBorrar) {
+  let eventosGuardados = JSON.parse(localStorage.getItem("eventos"));
+  let listaSinEventoEliminar = [];
+
+  for (let i = 0; i < eventosGuardados.length; i++) {
+    if (eventosGuardados[i].id !== idEventoBorrar) {
+      listaSinEventoEliminar.push(eventosGuardados[i]);
+    }
+  }
+
+  localStorage.setItem("eventos", JSON.stringify(listaSinEventoEliminar));
+
+  window.location.reload();
+}
