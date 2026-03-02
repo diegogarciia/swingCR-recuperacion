@@ -156,12 +156,6 @@ header {
 .campos-dinamicos {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
-  background: #f8f9fa;
-  border: 1px dashed #b8962e;
-  border-radius: 4px;
-  margin-bottom: 24px;
 }
 
 .radio-group {
