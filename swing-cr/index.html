@@ -86,30 +86,47 @@
         </div>
 
         <div id="campos-clase" class="campos-dinamicos" style="display:none;">
-          <input type="text" id="estilo-clase" placeholder="Estilo (ej. Lindy Hop)">
-          <select id="nivel-clase">
-            <option value="">-- Selecciona Nivel --</option>
-            <option value="Básico">Básico</option>
-            <option value="Intermedio">Intermedio</option>
-            <option value="Avanzado">Avanzado</option>
-          </select>
-          <input type="text" id="profesores-clase" placeholder="Profesores (ej. Marta y Pedro)">
+          <div class="grupo-form">
+            <label for="estilo-clase">Estilo:</label>
+            <input type="text" id="estilo-clase" placeholder="Lindy Hop, Shag...">
+          </div>
+          <div class="grupo-form">
+            <label for="nivel-clase">Nivel:</label>
+            <select id="nivel-clase">
+              <option value="">-- Selecciona --</option>
+              <option value="Básico">Básico</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Avanzado">Avanzado</option>
+            </select>
+          </div>
+          <div class="grupo-form">
+            <label for="profesores-clase">Profesores:</label>
+            <input type="text" id="profesores-clase" placeholder="Ej. Marta y Pedro">
+          </div>
         </div>
 
         <div id="campos-actividad" class="campos-dinamicos" style="display:none;">
-          <select id="tipo-actividad">
-            <option value="">-- Tipo de Actividad --</option>
-            <option value="Taster">Taster</option>
-            <option value="Social">Social</option>
-            <option value="Concierto">Concierto</option>
-            <option value="Mix & Match">Mix & Match</option>
-          </select>
-          <div class="radio-group">
-            <label>Banda en directo:</label>
-            <label><input type="radio" name="banda" value="si" checked> Sí</label>
-            <label><input type="radio" name="banda" value="no"> No</label>
+          <div class="grupo-form">
+            <label for="tipo-actividad">Tipo de Actividad:</label>
+            <select id="tipo-actividad">
+              <option value="">-- Selecciona --</option>
+              <option value="Taster">Taster</option>
+              <option value="Social">Social</option>
+              <option value="Concierto">Concierto</option>
+              <option value="Mix & Match">Mix & Match</option>
+            </select>
           </div>
-          <textarea id="descripcion-actividad" placeholder="Descripción..."></textarea>
+          <div class="grupo-form">
+            <div class="radio-group">
+              <label>Banda en directo:</label>
+              <label><input type="radio" name="banda" value="si" checked> Sí</label>
+              <label><input type="radio" name="banda" value="no"> No</label>
+            </div>
+          </div>
+          <div class="grupo-form">
+            <label for="descripcion-actividad">Descripción:</label>
+            <textarea id="descripcion-actividad" placeholder="Escribe aquí los detalles..."></textarea>
+          </div>
         </div>
 
         <button type="submit" class="btn-guardar">Guardar Evento</button>
