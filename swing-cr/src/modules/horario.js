@@ -1,6 +1,7 @@
 export function initHorario() {
   generarHorario();
   cargarEventos();
+  configurarCierreModal();
 }
 
 function generarHorario() {
@@ -67,7 +68,53 @@ function cargarEventos() {
         tarjeta.innerHTML = "<strong>Actividad: " + evento.tipoActividad + "</strong><br>" + (evento.banda === "si" ? "Banda en directo" : "Sin banda");
       }
 
+      tarjeta.addEventListener("click", function() {
+        abrirModal(evento);
+      });
+
       celda.appendChild(tarjeta);
     }
   }
+}
+
+function abrirModal(evento) {
+  let modal = document.getElementById("modal-evento");
+  let titulo = document.getElementById("modal-titulo");
+  let info = document.getElementById("modal-info");
+  let btnEliminar = document.getElementById("btn-eliminar");
+
+  if (evento.tipoEvento === "clase") {
+    titulo.textContent = "Detalles de la Clase";
+    info.innerHTML = 
+      "<p><b>Día:</b> " + evento.dia + "</p>" +
+      "<p><b>Hora:</b> " + evento.hora + "</p>" +
+      "<p><b>Sala:</b> " + evento.sala + "</p>" +
+      "<p><b>Estilo:</b> " + evento.estilo + "</p>" +
+      "<p><b>Nivel:</b> " + evento.nivel + "</p>" +
+      "<p><b>Profesores:</b> " + evento.profesores + "</p>";
+  } else {
+    titulo.textContent = "Detalles de la Actividad";
+    info.innerHTML = 
+      "<p><b>Día:</b> " + evento.dia + "</p>" +
+      "<p><b>Hora:</b> " + evento.hora + "</p>" +
+      "<p><b>Lugar:</b> " + evento.sala + "</p>" +
+      "<p><b>Tipo:</b> " + evento.tipoActividad + "</p>" +
+      "<p><b>Banda en directo:</b> " + evento.banda + "</p>" +
+      "<p><b>Descripción:</b> " + evento.descripcion + "</p>";
+  }
+
+  modal.style.display = "flex";
+
+  btnEliminar.onclick = function() {
+    borrarEvento(evento.id);
+  };
+}
+
+function configurarCierreModal() {
+  let btnCerrar = document.getElementById("cerrar-modal");
+  let modal = document.getElementById("modal-evento");
+
+  btnCerrar.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
 }
