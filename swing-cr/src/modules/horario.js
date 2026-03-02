@@ -1,3 +1,7 @@
+let tarjetaArrastrada = null; 
+let salaOrigen = null; 
+let scrollAutomaticoParaArrastrar = null;
+
 export function initHorario() {
   generarHorario();
   cargarEventos();
@@ -34,6 +38,45 @@ function generarHorario() {
         let tdSala = document.createElement("td");
         
         tdSala.id = diaActual.nombre + "-" + horaTexto + "-" + salas[s];
+
+        tdSala.addEventListener('dragover', (e) => {
+          e.preventDefault(); 
+          if (!tarjetaArrastrada) return;
+          
+          let esMismaSala = salas[s] === salaOrigen; 
+          let estaOcupada = tdSala.children.length > 0;
+          
+          if (!esMismaSala) {
+            tdSala.classList.add('celda-hover-prohibido'); 
+          } else if (estaOcupada) {
+            tdSala.classList.add('celda-hover-prohibido'); 
+          } else {
+            tdSala.classList.add('celda-hover-valido'); 
+          }
+        });
+
+        tdSala.addEventListener('dragleave', () => {
+          tdSala.classList.remove('celda-hover-valido', 'celda-hover-prohibido');
+        });
+
+        tdSala.addEventListener('drop', (e) => {
+          e.preventDefault();
+          tdSala.classList.remove('celda-hover-valido', 'celda-hover-prohibido');
+
+          if (!tarjetaArrastrada) return;
+
+          if (salas[s] !== salaOrigen) {
+            alert('No se puede cambiar de sala'); 
+            return;
+          }
+          if (tdSala.children.length > 0) {
+            alert('Celda ocupada, no se puede soltar'); 
+            return; 
+          }
+
+          let idEvento = tarjetaArrastrada.getAttribute("data-id");
+          moverEvento(idEvento, diaActual.nombre, horaTexto, salas[s]);
+        });
         
         tr.appendChild(tdSala);
       }
@@ -70,6 +113,31 @@ function cargarEventos() {
 
       tarjeta.addEventListener("click", function() {
         abrirModal(evento);
+      });
+
+      tarjeta.draggable = true;
+      tarjeta.setAttribute("data-id", evento.id); 
+
+      tarjeta.addEventListener('dragstart', (e) => {
+        tarjetaArrastrada = tarjeta;
+        salaOrigen = evento.sala;
+        tarjeta.style.opacity = '0.5';
+
+        scrollAutomaticoParaArrastrar = setInterval(() => {
+            const mouseY = e.clientY;
+            const windowHeight = window.innerHeight;
+            const scrollStep = 20;
+            if (mouseY > windowHeight - 80) window.scrollBy(0, scrollStep);
+            if (mouseY < 80) window.scrollBy(0, -scrollStep);
+        }, 50);
+      });
+
+      tarjeta.addEventListener('dragend', () => {
+        tarjeta.style.opacity = '1';
+        tarjetaArrastrada = null;
+        salaOrigen = null;
+        clearInterval(scrollAutomaticoParaArrastrar);
+        scrollAutomaticoParaArrastrar = null;
       });
 
       celda.appendChild(tarjeta);
@@ -132,4 +200,19 @@ function borrarEvento(idEventoBorrar) {
   localStorage.setItem("eventos", JSON.stringify(listaSinEventoEliminar));
 
   window.location.reload();
+}
+
+function moverEvento(idEvento, nuevoDia, nuevaHora, nuevaSala) {
+  let eventosGuardados = JSON.parse(localStorage.getItem("eventos"));
+  
+  for (let i = 0; i < eventosGuardados.length; i++) {
+    if (eventosGuardados[i].id === idEvento) {
+      eventosGuardados[i].dia = nuevoDia;
+      eventosGuardados[i].hora = nuevaHora;
+      eventosGuardados[i].sala = nuevaSala;
+    }
+  }
+  
+  localStorage.setItem("eventos", JSON.stringify(eventosGuardados));
+  window.location.reload(); 
 }
