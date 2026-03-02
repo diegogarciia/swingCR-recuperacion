@@ -368,3 +368,11 @@ footer {
   background-color: #D1ECF1; 
   color: #0C5460;
 }
+
+.celda-hover-valido { 
+  background-color: green; 
+}
+
+.celda-hover-prohibido { 
+  background-color: red; 
+}
